@@ -7,6 +7,11 @@ const bcrypt = require("bcryptjs");
 
 //User Model
 const User = require("../models/User");
+router.get("/settings", (req, res) => {
+  res.render("settings", {
+    user: req.user
+  });
+});
 router.all("*", redirectAuth);
 //Login Page
 router.get("/login", (req, res) => {
@@ -89,7 +94,6 @@ router.post("/login", function(req, res, next) {
     failureRedirect: "login",
     failureFlash: true
   })(req, res, next);
-  console.log(req.flash());
 });
 
 // Logout
