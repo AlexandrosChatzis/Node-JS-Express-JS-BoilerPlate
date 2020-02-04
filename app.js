@@ -28,6 +28,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
+  res.locals.name = req.flash("name");
   next();
 });
 
@@ -60,7 +61,7 @@ app.use(bodyParser.json());
 
 //ROUTES
 app.use("/posts", postsRoute);
-app.use("/users", usersRoute);
+app.use("/", usersRoute);
 app.use("/", indexRoute);
 
 //CONNECT TO DB

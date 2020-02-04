@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { ensureAuthenticated } = require("../config/auth");
-router.get("/", (req, res) => {
+const { redirectAuth } = require("../config/redirectAuth");
+
+router.get("/", redirectAuth, (req, res) => {
   res.render("welcome");
 });
 
