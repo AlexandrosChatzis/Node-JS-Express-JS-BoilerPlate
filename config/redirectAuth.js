@@ -5,9 +5,8 @@ module.exports = {
       res.render("dashboard", {
         name: req.user.name
       });
+    } else {
+      next();
     }
-
-    req.flash("error_msg", "Please log in to view this resource");
-    next();
   }
 };
