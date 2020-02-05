@@ -7,10 +7,15 @@ router.get("/", redirectAuth, (req, res) => {
   res.render("welcome");
 });
 
-router.get("/dashboard", ensureAuthenticated, (req, res) =>
+router.get("/dashboard", ensureAuthenticated, (req, res) => {
   res.render("dashboard", {
     name: req.user.name
-  })
-);
+  });
+});
 
+router.get("/settings", ensureAuthenticated, (req, res) => {
+  res.render("settings", {
+    user: req.user
+  });
+});
 module.exports = router;

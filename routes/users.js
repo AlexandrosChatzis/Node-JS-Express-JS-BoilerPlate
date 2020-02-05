@@ -2,36 +2,26 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const { redirectAuth } = require("../config/redirectAuth");
+
 //Encrypt Password
 const bcrypt = require("bcryptjs");
 
 //User Model
 const User = require("../models/User");
-router.get("/settings", (req, res) => {
-  res.render("settings", {
-    user: req.user
-  });
-});
-router.all("*", redirectAuth);
+
 //Login Page
-router.get("/login", (req, res) => {
+router.get("/login", redirectAuth, (req, res) => {
   res.render("login");
 });
 //Login Handler
 
 //Register Page
-router.get("/register", (req, res) => {
+router.get("/register", redirectAuth, (req, res) => {
   res.render("register");
 });
 
 //Register Handler
 router.post("/register", (req, res) => {
-  // const user = new User({
-  //   name: req.body.username,
-  //   email: req.body.email,
-  //   password: req.body.password
-  // });
-
   const { name, email, password, password2 } = req.body;
   let errors = [];
 
