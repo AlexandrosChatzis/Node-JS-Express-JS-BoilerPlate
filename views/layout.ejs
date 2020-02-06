@@ -15,7 +15,7 @@
     <title>Node.js</title>
   </head>
   <body>
-    <%if(name!=''){%><%-include('./partials/navbar')%><%}else{%><%-include('./partials/navbarLG')%><%}%>
+    <%if(name!=null){%><%-include('./partials/navbar')%><%}else{%><%-include('./partials/navbarLG')%><%}%>
 
     <div class="container">
       <%- body %>

@@ -8,15 +8,14 @@ router.get("/", redirectAuth, (req, res) => {
 });
 
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  res.render("dashboard", {
-    name: req.user.name
-  });
+  req.session.name = req.user.name;
+  res.locals.name = req.user.name;
+  res.render("dashboard");
 });
 
 router.get("/settings", ensureAuthenticated, (req, res) => {
   res.render("settings", {
-    user: req.user,
-    name: req.user.name
+    user: req.user
   });
 });
 module.exports = router;
