@@ -8,6 +8,8 @@ const passport = require("passport");
 require("dotenv/config");
 const app = express();
 
+//use public folder
+app.use(express.static("public"));
 //Require Passport config
 require("./config/passport")(passport);
 

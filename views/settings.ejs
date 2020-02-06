@@ -4,6 +4,7 @@
       <h1 class="text-center mb-3">
         <i class="fas fa-sign-in-alt"></i> User Info
       </h1>
+      <%- include('./partials/messages') %>
       <div class="form-group">
         <label>Name</label>
         <input
@@ -15,7 +16,8 @@
           disabled
         />
       </div>
-      <form action="/settings" method="POST">
+
+      <form action="/change_settings" method="POST">
         <div class="form-group">
           <label for="email">Email</label>
           <input
@@ -34,7 +36,7 @@
             id="password"
             name="password"
             class="form-control"
-            placeholder="Create Password"
+            placeholder="Change Password"
             value="<%= typeof password != 'undefined' ? password : '' %>"
           />
         </div>
